@@ -20,8 +20,7 @@ class AuthenticationMiddleware {
         ------------------------------------------*/
 
         if ( !array_key_exists ( 'id', $_SESSION ) || trim ( $_SESSION['id'] ) == '' || !filter_var ( $_SESSION['id'], FILTER_VALIDATE_INT) ) {
-            var_dump ( $_SESSION );
-            exit;
+            
             return $response->withStatus( 302 )->withHeader ( 'Location', '/signin/nolog' );
         }
 
