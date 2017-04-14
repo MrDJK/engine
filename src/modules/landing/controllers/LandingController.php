@@ -106,6 +106,11 @@ class LandingController {
 
 	}
 
+	public function signout ( Request $request, Response $response ) {
+		session_destroy();
+		return $response->withStatus(502)->withHeader ( 'Location', '/signin' );	
+	}
+
 	private function existCheck ( $field, $value ) {
 
 		if ( $field == 'email' || $field == 'name' ) {
@@ -138,11 +143,11 @@ class LandingController {
 					return $response->withStatus(502)->withHeader ( 'Location', '/' );
 				}
 			} else {
-				return $response->withStatus(502)->withHeader ( 'Location', '/signin/invalid' );
+				return $response->withStatus(502)->withHeader ( 'Location', '/signin' );
 			}
 		}
 
-		return $response->withStatus(502)->withHeader ( 'Location', '/signin/invalid' );
+		return $response->withStatus(502)->withHeader ( 'Location', '/signin' );
 
 		
 	}

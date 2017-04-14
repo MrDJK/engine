@@ -4,7 +4,7 @@ use \Psr\Http\Message\ResponseInterface as Response;
 class AuthenticationMiddleware {
 
     /**
-     * Example middleware invokable class
+     * Authentication Middleware Class
      *
      * @param  \Psr\Http\Message\ServerRequestInterface $request  PSR7 request
      * @param  \Psr\Http\Message\ResponseInterface      $response PSR7 response
@@ -21,7 +21,7 @@ class AuthenticationMiddleware {
 
         if ( !array_key_exists ( 'id', $_SESSION ) || trim ( $_SESSION['id'] ) == '' || !filter_var ( $_SESSION['id'], FILTER_VALIDATE_INT) ) {
             
-            return $response->withStatus( 302 )->withHeader ( 'Location', '/signin/nolog' );
+            return $response->withStatus( 302 )->withHeader ( 'Location', '/signin' );
         }
 
         /* ----------------------------
@@ -30,7 +30,7 @@ class AuthenticationMiddleware {
         -----------------------------*/
 
         if ( !array_key_exists ( 'auth', $_SESSION ) || !is_string ( $_SESSION['auth'] ) || $_SESSION['auth'] != sha1 ( $_SERVER['HTTP_USER_AGENT'] ) ) {
-            return $response->withStatus ( 302 )->withHeader ( 'Location', '/signin/noauth' );
+            return $response->withStatus ( 302 )->withHeader ( 'Location', '/signin' );
         }
 
 
@@ -39,7 +39,7 @@ class AuthenticationMiddleware {
         -----------------------------*/
 
         if ( !array_key_exists ( 'activity', $_SESSION ) || ( time() - $_SESSION['activity'] ) > 1800 ) {
-            return $response->withStatus ( 302 )->withHeader ( 'Location', '/signin/noact' );
+            return $response->withStatus ( 302 )->withHeader ( 'Location', '/signin' );
         }
 
         $_SESSION['activity'] = time(); //Set new time each action.

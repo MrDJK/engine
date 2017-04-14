@@ -1,7 +1,13 @@
 <?php
 
 namespace Passwordless;
-
+ /**
+  *  Passwordless Class
+  * @param $db
+  * @param $mailer
+  *
+  * @return $code (string) | (bool)
+  */
 class Passwordless {
 
 	private $db = null;
@@ -94,7 +100,7 @@ class Passwordless {
 		$this->mailer->addAddress ( $email );
 		$this->mailer->isHTML ( true );
 		$this->mailer->Subject = 'Your authentication code';
-		$this->mailer->Body = '<a href="localhost/auth/'.$code.'">Sign In</a>';
+		$this->mailer->Body = '<a href="'.$_SERVER['SERVER_NAME'].'/auth/'.$code.'">Sign In</a>';
 
 		if ( $this->mailer->send() ) {
 			return true;

@@ -1,0 +1,31 @@
+{% extends "@base/insideview.html" %}
+
+{% block content %}
+   <div class="row">
+		<div class="col-md-8 col-offset-2">
+			{% if notifications %}
+				<ul class="list-group pmd-z-depth pmd-list pmd-card-list">
+					{% for note in notifications %}
+						<li class="list-group-item">
+							{% if note.read == 0 %}
+						        <i class="material-icons media-left">star</i>
+						    {% endif %}
+							<div class="media-body">
+								<h3 class="list-group-item-heading">{{ note.date }}</h3>
+								<span class="list-group-item-text">{{ note.message }}</span>
+							</div>
+							<a href="/notifications/delete/{{note.id}}">
+								<i class="material-icons media-right">check_box_outline_blank</i>
+							</a>
+						</li>
+					{% endfor %}
+				</ul>
+
+			{% else %}
+				<div class="alert alert-warning" role="alert">
+					You currently have no notifications
+				</div>
+			{% endif %}
+		</div>
+	</div>
+{% endblock %}

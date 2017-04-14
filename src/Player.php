@@ -14,7 +14,16 @@ class Player {
 		$this->db = $db;
 	}
 
+	public function validPlayer ( $id ) {
+		
+		if ( filter_var ( $id, FILTER_VALIDATE_INT ) ) {
+			if ( $info = $this->db->select ( 'players', 'id', ['id' => $id ] ) ) {
+				return true;
+			}
+		}
 
+		return false;
+	}
 	public function getInfo ( $id, $columns ) {
 
 		$info = null;

@@ -1,5 +1,22 @@
-{% extends "@base/mainview.html" %}
+{% extends "@base/insideview.html" %}
 
 {% block content %}
-   <p>Welcome Home: {{ name }}</p>
+   <div class="row">
+		<div class="col-md-8">
+			<p>Welcome Home: {{ name }}</p>
+		</div>
+
+		<div class="col-md-3">
+			<ul class="list-group pmd-z-depth pmd-list pmd-card-list pmd-list-icon">
+				<li class="list-group-item">
+					<i class="material-icons media-left">face</i>
+					<span class="media-body" >{{ name }}</span>
+				</li>
+				<li class="list-group-item">
+					<i class="material-icons media-left">school</i>
+					<span class="media-body">{{ level }}</span>
+				</li>
+			</ul>
+		</div>
+	</div>
 {% endblock %}

@@ -1,28 +1,38 @@
 
-{% extends "@base/mainview.html" %}
+{% extends "@base/outsideview.html" %}
 
 {% block content %}
 
 {% if type %}
-	{{ msg }}
+	<div class="alert {% if type == 'success' %} alert-success {% else %} alert-danger {% endif %}" role="alert">
+		{{msg}}
+	</div>
 {% endif %}
 
-	<form action="/signup" method="post">
-		<div class="form-group pmd-textfield">
-			<label for="email" class="control-label">
-				Email
-			</label>
+	
+<form action="/signup" method="post">
+	<div class="form-group pmd-textfield">
+		<label for="email" class="control-label pmd-input-group-label">
+			Email:
+		</label>
+		<div class="input-group">
+			<div class="input-group-addon"><i class="material-icons md-dark pmd-sm">email</i></div>
 			<input type="email" id="email" name="email" class="form-control" />
 		</div>
-
-		<div class="form-group pmd-textfield">
-			<label for="name" class="control-label">
-				Name
-			</label>
+	</div>
+	<div class="form-group pmd-textfield">
+		<label for="name" class="control-label pmd-input-group-label">
+			Name:
+		</label>
+		<div class="input-group">
+			<div class="input-group-addon"><i class="material-icons md-dark pmd-sm">perm_identity</i></div>
 			<input type="text" id="name" name="name" class="form-control" />
 		</div>
+	</div>
+  	<p class="help-block"> No passwords are needed. </p>
 
-		<input type="submit" class="btn pmd-btn-outline pmd-ripple-effect btn-primary" value="Sign Up" />
-	</form>
+  	<input type="submit" class="btn pmd-btn-outline pmd-ripple-effect btn-primary" value="Sign Up" />
+  	<a href="{{ path_for( 'signin' ) }}" title="Sign Up" class=" button btn pmd-btn-outline pmd-ripple-effect btn-default">Sign In</a>
+</form>
 
 {% endblock %}

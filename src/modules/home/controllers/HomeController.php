@@ -11,9 +11,13 @@ class HomeController {
 	}
 
 	public function home ( Request $request, Response $response ) {
-		$getName = $this->controller->player->getInfo ( $_SESSION['id'], 'name' );
-		$this->controller->view->render($response, '@home/index.html', ['name' => $getName[0]['name']]);
+		$getName = $this->controller->player->getInfo ( $_SESSION['id'], '*' );
+		$notes = new \Notifications\Notifications ( $this->controller->database );
+		$notes->createNotification ( $_SESSION['id'], 'Test Notifications' );
+		$this->controller->view->render($response, '@home/index.html', $getName[0]);
 	}
+
+
 
 
 }

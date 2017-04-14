@@ -1,0 +1,17 @@
+{% extends "@base/insideview.html" %}
+
+{% block content %}
+   <div class="row">
+		<div class="col-md-8 col-offset-2">
+			{% if type == 'success' %}
+				<div class="alert alert-success" role="alert">
+					Notification has been deleted. <a href="/notifications" title="Back to Notifications" class="alert-link">Back to Notifications</a>
+				</div>
+			{% else %}
+				<div class="alert alert-danger" role="alert">
+					Notification could not be deleted. <a href="/notifications" title="Back to Notifications" class="alert-link">Back to Notifications</a>
+				</div>
+			{% endif %}
+		</div>
+	</div>
+{% endblock %}
