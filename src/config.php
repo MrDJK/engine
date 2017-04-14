@@ -1,12 +1,14 @@
 <?php
 
-$config = array (
+$config = [
 	'displayErrorDetails' => true,
 	'addContentLengthHeader' => false,
-	'db' => array (
-		'host' => 'localhost',
-		'user' => 'root',
-		'pass' => '',
-		'dbname' => 'testengine',
-	),
-);
+	'database' => [
+		'database_type' => 'mysql',
+		'database_name' => 'engine',
+		'server' => 'localhost',
+		'username' => 'root',
+		'password' => '',
+		'charset' => 'utf8'
+	],
+];

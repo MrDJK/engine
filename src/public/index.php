@@ -9,24 +9,10 @@ session_name ( 'GameEngine' );
 session_start();
 /* 
 
-	Config Array - to separate later
+	Config Array
 
 */
-
-
-$config = [
-	'displayErrorDetails' => true,
-	'addContentLengthHeader' => false,
-	'database' => [
-		'database_type' => 'mysql',
-		'database_name' => 'engine',
-		'server' => 'localhost',
-		'username' => 'root',
-		'password' => '',
-		'charset' => 'utf8'
-	],
-];
-
+require_once ( '../config.php' );
 
 /* All Required Engine Files */
 require ( '../vendor/autoload.php' );
