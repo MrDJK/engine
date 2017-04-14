@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 04, 2017 at 02:09 AM
+-- Generation Time: Apr 14, 2017 at 06:37 PM
 -- Server version: 5.7.14
 -- PHP Version: 5.6.25
 
@@ -23,6 +23,21 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `notifications`
+--
+
+CREATE TABLE `notifications` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `user` int(10) UNSIGNED NOT NULL,
+  `message` text NOT NULL,
+  `date` datetime NOT NULL,
+  `read` tinyint(1) NOT NULL DEFAULT '0'
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `passwordlesscodes`
 --
 
@@ -32,6 +47,7 @@ CREATE TABLE `passwordlesscodes` (
   `expiry` datetime NOT NULL,
   `requested` datetime NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
 
 -- --------------------------------------------------------
 
@@ -52,6 +68,12 @@ CREATE TABLE `players` (
 --
 
 --
+-- Indexes for table `notifications`
+--
+ALTER TABLE `notifications`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `passwordlesscodes`
 --
 ALTER TABLE `passwordlesscodes`
@@ -68,3 +90,17 @@ ALTER TABLE `players`
 --
 -- AUTO_INCREMENT for dumped tables
 --
+
+--
+-- AUTO_INCREMENT for table `notifications`
+--
+ALTER TABLE `notifications`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;
+--
+-- AUTO_INCREMENT for table `players`
+--
+ALTER TABLE `players`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
